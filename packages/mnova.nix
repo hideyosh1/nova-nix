@@ -109,8 +109,8 @@ stdenv.mkDerivation rec {
   fixupPhase = ''
     runHook preFixup
 
-    substituteInPlace $out/share/applications/*.desktop \
-      --replace-fail '/opt/MestReNova/bin/MestReNova' "$out/bin/MestReNova"
+    # substituteInPlace $out/share/applications/*.desktop \
+    #   --replace-fail '/opt/MestReNova/bin/MestReNova' "$out/bin/MestReNova"
 
     runHook postFixup
   '';
