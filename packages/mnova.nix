@@ -24,6 +24,10 @@
   ncurses,
   gfortran,
   qt6,
+  gtk3,
+  gdk-pixbuf,
+  pango,
+  cairo,
   sqlite,
   openssl_3_5,
   python311,
@@ -89,6 +93,11 @@ stdenv.mkDerivation rec {
     libxcb-wm
     libxkbcommon
     libz
+
+    gtk3
+    gdk-pixbuf
+    pango
+    cairo
   ];
 
   nativeBuildInputs = [
