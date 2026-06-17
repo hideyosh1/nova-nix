@@ -4,7 +4,6 @@
   stdenv,
   dpkg,
   fetchurl,
-  blas,
   cups,
   dbus,
   egl-gbm,
@@ -25,13 +24,9 @@
   ncurses,
   gfortran,
   qt6,
-  gtk3,
-  gdk-pixbuf,
-  pango,
-  cairo,
   sqlite,
   openssl_3_5,
-  python314,
+  python311,
   libtinfo,
   libuuid,
   libx11,
@@ -48,11 +43,11 @@
 stdenv.mkDerivation rec {
   pname = "mnova";
 
-  version = "14.3.3-33362";
+  version = "17.0.0-41178";
 
   src = fetchurl {
-    url = "https://mestrelab.com/downloads/mnova/linux/Debian/11/mestrenova_${version}_amd64.deb";
-    hash = "sha256-aaa0VW06uO7VtT5QWdAn6RenPIxGi9i64glT0STVSo4=";
+    url = "https://mestrelab.com/downloads/mnova/linux/Debian/13/mestrenova_${version}_amd64.deb";
+    hash = "sha256-d8UQjiaxbtYNrwYPTF97gOV2MaRvt9B9Q4AI5oDlz/E=";
   };
 
   buildInputs = [
@@ -88,14 +83,10 @@ stdenv.mkDerivation rec {
     libxcb-wm
     libxkbcommon
     libz
-
-    gtk3
-    gdk-pixbuf
-    pango
-    cairo
     ncurses
     openssl_3_5
-    python314
+    python311
+    python311
     sqlite
     xz
   ];
@@ -118,8 +109,8 @@ stdenv.mkDerivation rec {
   fixupPhase = ''
     runHook preFixup
 
-    substituteInPlace $out/bin/MestReNova \
-      --replace-fail '/bin/bash' "/usr/bin/env sh"
+    substituteInPlace $out/share/applications/*.desktop \
+      --replace-fail '/opt/MestReNova/bin/MestReNova' "$out/bin/MestReNova"
 
     runHook postFixup
   '';

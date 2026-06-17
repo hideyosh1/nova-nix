@@ -19,4 +19,4 @@ nixpkgs.overlays = [
 
 Then install `pkgs.mnova` as normal.
 
-This is untested since I don't have a license right now.
+I've tested this to be working with MestReNova 14.3.3 because that's all my university has licensed for. All features work, to my understanding, but do let me know if you can patch things up to higher versions.
