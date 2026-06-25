@@ -4,7 +4,6 @@
   stdenv,
   dpkg,
   fetchurl,
-  blas,
   cups,
   dbus,
   egl-gbm,
@@ -120,6 +119,9 @@ stdenv.mkDerivation rec {
 
     substituteInPlace $out/bin/MestReNova \
       --replace-fail '/bin/bash' "/usr/bin/env sh"
+
+    substituteInPlace $out/share/applications/MestReNova.desktop \
+      --replace-fail 'Exec=' "Exec=env "
 
     runHook postFixup
   '';
