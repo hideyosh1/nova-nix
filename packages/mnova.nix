@@ -25,6 +25,8 @@
   gfortran,
   qt6,
   gtk3,
+  gtk3-x11,
+  gtk4,
   gdk-pixbuf,
   pango,
   cairo,
@@ -89,6 +91,8 @@ stdenv.mkDerivation rec {
     libz
 
     gtk3
+    gtk3-x11
+    gtk4
     gdk-pixbuf
     pango
     cairo
@@ -119,9 +123,6 @@ stdenv.mkDerivation rec {
 
     substituteInPlace $out/bin/MestReNova \
       --replace-fail '/bin/bash' "/usr/bin/env sh"
-
-    substituteInPlace $out/share/applications/MestReNova.desktop \
-      --replace-fail 'Exec=' "Exec=env "
 
     runHook postFixup
   '';
